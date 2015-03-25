@@ -1,0 +1,32 @@
+{
+    "manifest_version": 2,
+    "name": "Github Disqus project comments",
+    "version": "0.0.1",
+    "description": "Embed Disqus comments in Github project pages",
+    "short_name": "Github Disqus",
+    "icons": {
+        "16": "icons/icon16.png",
+        "48": "icons/icon48.png",
+        "128": "icons/icon128.png"
+    },
+    "permissions": [
+        "webRequest",
+        "webRequestBlocking",
+        "https://github.com/*"
+    ],
+    "background": {
+        "scripts": ["background/js/bg.js"]
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://github.com/*"
+            ],
+            "js": [
+                "content/js/embed.js"
+            ],
+            "run_at": "document_end"
+        }
+    ],
+    "content_security_policy": "script-src 'self'; object-src 'self'"
+}
